@@ -9,7 +9,7 @@ var maxSubArray = function(nums) {
         newArr[i] = nums[i];
 
       if (newArr[i] < newArr[i - 1] + nums[i]) {
-          newArr[i] = newArr[i - 1] + nums[i];
+        newArr[i] = newArr[i - 1] + nums[i];
       }
     }
 
