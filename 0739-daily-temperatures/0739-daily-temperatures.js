@@ -3,7 +3,7 @@
  * @return {number[]}
  */
 var dailyTemperatures = function(temperatures) {
-    let result = new Array(temperatures.length).fill(0);
+    const result = new Array(temperatures.length).fill(0);
 
     for (let i = 0; i < temperatures.length; i += 1) {
         for (let j = i + 1; j < temperatures.length; j += 1) {
