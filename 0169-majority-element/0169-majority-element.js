@@ -3,18 +3,21 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    const count = {};
-    const standard = Math.floor(nums.length / 2);
-
-    for (const char of nums) {
-        if (count[char]) {
-            count[char]++;
-        } else {
-            count[char] = 1;
-        }
-        
-        if (count[char] > standard) {
-            return char;
-        }
+  const hashMap = {};
+  
+  for (const num of nums) {
+    if(hashMap[num]) {
+      hashMap[num] += 1
+    } else {
+      hashMap[num] = 1;
     }
+  }
+  
+  for (const num in hashMap) {
+    if (hashMap[num] > nums.length / 2) {
+      return parseInt(num);
+    }
+  }
+  
+  return -1;
 };
