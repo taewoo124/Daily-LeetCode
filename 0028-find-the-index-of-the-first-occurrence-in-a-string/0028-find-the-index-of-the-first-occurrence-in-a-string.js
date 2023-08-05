@@ -4,7 +4,7 @@
  * @return {number}
  */
 var strStr = function(haystack, needle) {
-  // if (!needle) return 0;
+  if (!needle) return 0;
   
   const checkInclusion = haystack.includes(needle);
   
