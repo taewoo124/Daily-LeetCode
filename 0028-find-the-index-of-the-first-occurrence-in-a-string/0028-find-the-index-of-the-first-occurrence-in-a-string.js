@@ -5,8 +5,9 @@
  */
 var strStr = function(haystack, needle) {
   if (!needle) return 0;
-  
+
   const checkInclusion = haystack.includes(needle);
-  
-  return checkInclusion ? haystack.indexOf(needle) : -1;
+  const checkIndex = haystack.indexOf(needle);
+
+  return checkInclusion ? checkIndex : -1;
 };
