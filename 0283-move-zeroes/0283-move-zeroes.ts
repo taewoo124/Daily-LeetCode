@@ -1,14 +1,20 @@
+/**
+ Do not return anything, modify nums in-place instead.
+ */
 function moveZeroes(nums: number[]): void {
-  let insertPos: number = 0;
+  const a: number[] = [...nums];
+  const zeroStack: number[] = [];
+  const stack: number[] = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      nums[insertPos] = nums[i];
-      insertPos++;
-    }
+  for (const char of nums) {
+    char === 0 ? zeroStack.push(a.shift()) : stack.push(a.shift());
   }
 
-  for (let i = insertPos; i < nums.length; i++) {
-    nums[i] = 0;
+  for (let i = 0; i < stack.length; i++) {
+      nums[i] = stack[i];
   }
-}
+
+  for (let j = 0; j < zeroStack.length; j++) {
+      nums[stack.length + j] = zeroStack[j];
+  }
+};
