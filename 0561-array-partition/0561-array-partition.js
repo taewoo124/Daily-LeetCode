@@ -3,13 +3,12 @@
  * @return {number}
  */
 var arrayPairSum = function(nums) {
-    const result = nums.sort((a, b) => a - b);
-    let sum = 0;
+  nums.sort((a, b) => a - b);
+  let result = 0;
   
-    for (let i = 0; i < result.length; i += 2) {
-        sum += nums[i];
-    }
-
-    return sum;
+  for (let i = 0; i < nums.length; i += 2) {
+    result += nums[i];
+  }
+  
+  return result;
 };
-
