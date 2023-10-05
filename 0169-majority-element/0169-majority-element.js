@@ -3,21 +3,15 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-  const hashMap = {};
-  
-  for (const num of nums) {
-    if(hashMap[num]) {
-      hashMap[num] += 1
-    } else {
-      hashMap[num] = 1;
+  let count = 0;
+  let candidate = null;
+
+  for (let num of nums) {
+    if (count === 0) {
+      candidate = num;
     }
+    count += (num === candidate) ? 1 : -1;
   }
   
-  for (const num in hashMap) {
-    if (hashMap[num] > nums.length / 2) {
-      return parseInt(num);
-    }
-  }
-  
-  return -1;
+  return candidate;
 };
