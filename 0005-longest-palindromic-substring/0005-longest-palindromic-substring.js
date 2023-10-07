@@ -15,8 +15,6 @@ const checkIsPalindrome = (s, startIndex, endIndex) => {
 }
 
 const longestPalindrome = function(s) {
-  const { log } = console;
-  
   const totalLength = s.length;
   let maxLength = 0;
   let startIndex = 0;
