@@ -3,23 +3,23 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    const bracket = {
-        ")": "(",
-        "}": "{",
-        "]": "["
-    };
-    const stack = [];
+  const stack = [];
+  const map = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+  };
 
-    for (let char of s) {
-        if (bracket[char]) {
-            if (stack.length === 0 || stack.pop() !== bracket[char]) {
-                return false;
-            }
-        } else {
-            stack.push(char);
-            console.log("stack: ", stack);
-        }
+  for (let char of s) {
+    if (map[char]) {
+      let topElement = stack.pop();
+      if (map[char] !== topElement) {
+        return false;
+      }
+    } else {
+      stack.push(char);
     }
+  }
     
-    return stack.length === 0;
+  return stack.length === 0;
 };
