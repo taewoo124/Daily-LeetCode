@@ -3,8 +3,8 @@
  * @param {string} needle
  * @return {number}
  */
-var strStr = function (haystack, needle) {
-  if (!needle) return 0;
-
-  return haystack.indexOf(needle);
+var strStr = function(haystack, needle) {
+  const index = haystack.indexOf(needle);
+  
+  return index;
 };
