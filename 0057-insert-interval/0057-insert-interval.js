@@ -4,22 +4,28 @@
  * @return {number[][]}
  */
 var insert = function(intervals, newInterval) {
-  let [start, end] = newInterval;
-  const left = [];
-  const right = [];
+  const result = [];
+  let i = 0;
 
-  for (const interval of intervals) {
-    const [first, last] = interval;
-
-    if (last < start) {
-      left.push(interval);
-    } else if (first > end) {
-      right.push(interval);
-    } else {
-      start = Math.min(start, first);
-      end = Math.max(end, last);
-    }
+  while (i < intervals.length && intervals[i][1] < newInterval[0]) {
+    result.push(intervals[i]);
+    i++;
   }
 
-  return [...left, [start, end], ...right];
+  while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
+    newInterval = [
+      Math.min(newInterval[0], intervals[i][0]),
+      Math.max(newInterval[1], intervals[i][1])
+    ];
+    i++;
+  }
+
+  result.push(newInterval);
+
+  while (i < intervals.length) {
+    result.push(intervals[i]);
+    i++;
+  }
+
+  return result;
 };
