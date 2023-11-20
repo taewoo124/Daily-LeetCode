@@ -7,6 +7,6 @@ function rotate(nums: number[], k: number): void {
   while (k > 0) {
     stack.push(nums.pop());
     nums.unshift(stack.shift());
-    k--
+    k--;
   }
-};
+}
