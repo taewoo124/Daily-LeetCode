@@ -7,7 +7,7 @@ function fib(n: number): number {
   return fibHelper(n, dp);
 };
 
-function fibHelper(n, dp): number {
+function fibHelper(n: number, dp: number[]): number {
   if (dp[n] >= n) return dp[n];
   
   dp[n] = fibHelper(n - 1, dp) + fibHelper(n - 2, dp);
