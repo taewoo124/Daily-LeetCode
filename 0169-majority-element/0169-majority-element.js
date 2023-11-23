@@ -3,15 +3,16 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-  let count = 0;
-  let candidate = null;
+  const hashMap = {};
+  const size = nums.length / 2;
 
-  for (let num of nums) {
-    if (count === 0) {
-      candidate = num;
+  for (const char of nums) {
+    if (!hashMap[char]) {
+      hashMap[char] = 1;
+    } else {
+      hashMap[char]++;
     }
-    count += (num === candidate) ? 1 : -1;
+
+    if (hashMap[char] > size) return char;
   }
-  
-  return candidate;
 };
