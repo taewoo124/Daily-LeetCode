@@ -12,7 +12,7 @@ var maximum69Number  = function(num) {
     }
   }
   
-  const result = Number(str.reduce((acc, cur) => acc + cur));
+  const result = str.join("")
   
-  return result;
+  return Number(result);
 };
