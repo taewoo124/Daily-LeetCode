@@ -12,7 +12,7 @@ function minPairSum(nums: number[]): number {
     end--;
   }
   
-  const result = Math.max(...array);
+  const result: number = Math.max(...array);
   
   return result;
 };
