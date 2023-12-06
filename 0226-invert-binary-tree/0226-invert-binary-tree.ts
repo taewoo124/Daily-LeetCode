@@ -13,13 +13,13 @@
  */
 
 function invertTree(root: TreeNode | null): TreeNode | null {
-  if (!root) return root;
+  if (!root) return null;
   
-  const leftTree: TreeNode | null = invertTree(root.left);
-  const rightTree: TreeNode | null = invertTree(root.right);
+  const leftNode = invertTree(root.left);
+  const rightNode = invertTree(root.right);
   
-  root.left = rightTree;
-  root.right = leftTree;
+  root.left = rightNode;
+  root.right = leftNode;
   
   return root;
 };
