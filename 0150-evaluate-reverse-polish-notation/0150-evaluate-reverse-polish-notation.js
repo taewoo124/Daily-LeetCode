@@ -2,24 +2,32 @@
  * @param {string[]} tokens
  * @return {number}
  */
-var evalRPN = function(tokens) {
-    const stack = [];
-    const obj = {
-        "+": (b, a) => a + b,
-        "-": (b, a) => a - b,
-        "*": (b, a) => a * b,
-        "/": (b, a) => Math.trunc(a / b),
+function evalRPN(tokens) {
+  const stack = [];
+
+  tokens.forEach(token => {
+    if (!isNaN(token)) {
+      stack.push(parseInt(token));
+    } else {
+      const a = stack.pop();
+      const b = stack.pop();
+
+      switch (token) {
+        case '+':
+          stack.push(b + a);
+          break;
+        case '-':
+          stack.push(b - a);
+          break;
+        case '*':
+          stack.push(b * a);
+          break;
+        case '/':
+          stack.push(parseInt(b / a));
+          break;
+      }
     }
-    
-    for (const char of tokens) {
-        if (obj[char]) {
-            const top = stack.pop();
-            const second = stack.pop();
-            stack.push(obj[char](top, second));
-        } else {
-            stack.push(Number(char));
-        }
-    }
-    
-    return stack.pop();
+  });
+
+  return stack.pop();
 };
