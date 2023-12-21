@@ -11,20 +11,26 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    const result = [];
-    
-    if (root === null) return result;
+  if (!root) return [];
 
-    function DFS(node, level) {
-        if (node === null) return;
-        if (level === result.length) result.push([]);
-        result[level].push(node.val);
-        
-        DFS(node.left, level + 1);
-        DFS(node.right, level + 1);
+  const result = [];
+  const queue = [root];
+  
+  while (queue.length > 0) {
+    const currentLength = queue.length;
+    const currentLevel = [];
+    
+    for (let i = 0; i < currentLength; i++) {
+      const node = queue.shift();
+      
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+      
+      currentLevel.push(node.val);
     }
-
-    DFS(root, 0);  // start DFS with root at level 0
     
-    return result;
+    result.push(currentLevel);
+  }
+  
+  return result;
 };
