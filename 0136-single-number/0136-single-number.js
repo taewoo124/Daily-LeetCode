@@ -4,17 +4,16 @@
  */
 var singleNumber = function(nums) {
   const hashMap = {};
-  let result;
   
-  for (const char of nums) {
-    if (hashMap[char]) {
-      hashMap[char]++;
+  for (const num of nums) {
+    if (!hashMap[num]) {
+      hashMap[num] = 1;
     } else {
-      hashMap[char] = 1;
-    } 
+      hashMap[num]++;
+    }
   }
   
-  for (const num in hashMap) {
-    if (hashMap[num] === 1) return num;
+  for (const key in hashMap) {
+    if (hashMap[key] === 1) return key;
   }
 };
