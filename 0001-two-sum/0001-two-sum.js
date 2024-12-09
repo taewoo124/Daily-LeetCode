@@ -4,16 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  const result = [];
-
+  const lookup = {};
+  
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        result.push(i, j);
-      }
+    const x = target - nums[i];
+    
+    if (lookup[x] !== undefined) {
+      return [lookup[x], i];
     }
+    
+    lookup[nums[i]] = i;
   }
   
-  return result;
+  return [];
 };
-
