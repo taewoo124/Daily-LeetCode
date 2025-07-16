@@ -4,25 +4,33 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-    if (s.length !== t.length) return false;
-    
+    let longString = t;
+    let shortString = s;
+
+    if (s.length > t.length) {
+        longString = s;
+        shortString = t;
+    }
+
     const hashMap = {};
-    
-    for (const char of s) {
+
+    for (const char of longString) {
         if (hashMap[char]) {
             hashMap[char] += 1;
         } else {
             hashMap[char] = 1;
         }
     }
-    
-    for (const char of t) {
+
+    for (const char of shortString) {
         if (hashMap[char]) {
             hashMap[char] -= 1;
         } else {
-            return false;
+            continue;
         }
     }
-    
-    return true;
+
+    const result = Object.values(hashMap).reduce((a, b) => a + b, 0);
+
+    return result === 0;
 };
